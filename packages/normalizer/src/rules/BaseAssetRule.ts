@@ -18,7 +18,7 @@ export const BaseAssetRule: NormalizerRule = {
   transform: (asset: RawAsset, draft: Partial<KnowledgeObject>) => {
     if (asset.path === 'pack.mcmeta') {
       draft.id = "minecraft.resourcepack.pack";
-      draft.type = "ResourcePack";
+      draft.type = "Asset";
       draft.title = "pack.mcmeta";
       draft.description = "The metadata file for the resource pack.";
       return;
@@ -39,12 +39,12 @@ export const BaseAssetRule: NormalizerRule = {
 
     if (rootDir === 'models') {
       draft.id = `minecraft.resourcepack.model.${subCategory ? subCategory + '.' : ''}${name}`;
-      draft.type = "Model";
+      draft.type = "Asset";
       draft.title = `Model: ${name}`;
       draft.description = `Vanilla model definition for ${name}.`;
     } else if (rootDir === 'blockstates') {
       draft.id = `minecraft.resourcepack.blockstate.${name}`;
-      draft.type = "Blockstate";
+      draft.type = "Asset";
       draft.title = `Blockstate: ${name}`;
       draft.description = `Vanilla blockstate definition for ${name}.`;
     }
