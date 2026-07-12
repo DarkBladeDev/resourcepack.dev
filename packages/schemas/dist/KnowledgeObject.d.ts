@@ -1,6 +1,17 @@
 import { z } from "zod";
 export declare const knowledgeObjectTypeSchema: z.ZodEnum<["Asset", "Concept", "Tutorial", "Collection"]>;
 export declare const knowledgeObjectDifficultySchema: z.ZodEnum<["Beginner", "Intermediate", "Advanced"]>;
+export declare const verificationLevelSchema: z.ZodEnum<["official", "inferred", "community"]>;
+export declare const verificationSchema: z.ZodObject<{
+    level: z.ZodEnum<["official", "inferred", "community"]>;
+    confidence: z.ZodNumber;
+}, "strip", z.ZodTypeAny, {
+    level: "official" | "inferred" | "community";
+    confidence: number;
+}, {
+    level: "official" | "inferred" | "community";
+    confidence: number;
+}>;
 export declare const knowledgeObjectSchema: z.ZodObject<{
     id: z.ZodString;
     type: z.ZodEnum<["Asset", "Concept", "Tutorial", "Collection"]>;
@@ -12,6 +23,16 @@ export declare const knowledgeObjectSchema: z.ZodObject<{
     tags: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
     namespaces: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
     difficulty: z.ZodOptional<z.ZodEnum<["Beginner", "Intermediate", "Advanced"]>>;
+    verification: z.ZodOptional<z.ZodObject<{
+        level: z.ZodEnum<["official", "inferred", "community"]>;
+        confidence: z.ZodNumber;
+    }, "strip", z.ZodTypeAny, {
+        level: "official" | "inferred" | "community";
+        confidence: number;
+    }, {
+        level: "official" | "inferred" | "community";
+        confidence: number;
+    }>>;
     relations: z.ZodDefault<z.ZodArray<z.ZodObject<{
         from: z.ZodString;
         to: z.ZodString;
@@ -59,6 +80,10 @@ export declare const knowledgeObjectSchema: z.ZodObject<{
     deprecatedIn?: string | undefined;
     removedIn?: string | undefined;
     difficulty?: "Beginner" | "Intermediate" | "Advanced" | undefined;
+    verification?: {
+        level: "official" | "inferred" | "community";
+        confidence: number;
+    } | undefined;
 }, {
     type: "Asset" | "Concept" | "Tutorial" | "Collection";
     description: string;
@@ -70,6 +95,10 @@ export declare const knowledgeObjectSchema: z.ZodObject<{
     tags?: string[] | undefined;
     namespaces?: string[] | undefined;
     difficulty?: "Beginner" | "Intermediate" | "Advanced" | undefined;
+    verification?: {
+        level: "official" | "inferred" | "community";
+        confidence: number;
+    } | undefined;
     relations?: {
         type: "depends_on" | "uses" | "extends" | "parent_of" | "child_of" | "implements" | "related";
         from: string;

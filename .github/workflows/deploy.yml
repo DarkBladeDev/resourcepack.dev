@@ -47,6 +47,15 @@ jobs:
       - name: Build project
         run: pnpm build
 
+      - name: Debug directory
+        run: |
+          echo "Workspace root:"
+          ls -la
+          echo "Apps/docs directory:"
+          ls -la apps/docs
+          echo "Apps/docs/dist directory:"
+          ls -la apps/docs/dist || echo "dist folder not found!"
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
