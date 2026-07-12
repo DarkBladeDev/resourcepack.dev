@@ -1,0 +1,46 @@
+---
+id: "minecraft.resourcepack.blockstate"
+type: "Asset"
+title: "Blockstate Definition"
+description: "Maps the gameplay state of a block to the visual models and textures it uses."
+introducedIn: "1.8"
+difficulty: "Intermediate"
+tags: ["block", "blockstate", "variants", "multipart"]
+namespaces: ["minecraft"]
+relations:
+  - from: "minecraft.resourcepack.blockstate"
+    to: "minecraft.resourcepack.model.block"
+    type: "uses"
+changes:
+  - version: "1.9"
+    type: "added"
+    description: "Added multipart blockstates for combining multiple models."
+---
+
+import { JsonSchema, ApiProperty } from '@resourcepack/ui';
+
+Blockstates dictate what model to display based on the block's current in-game properties (like facing direction, lit status, or waterlogged state).
+
+There are two primary ways to define a blockstate: **Variants** and **Multipart**.
+
+## Variants Example
+
+```json
+{
+  "variants": {
+    "facing=north": { "model": "block/furnace" },
+    "facing=south": { "model": "block/furnace", "y": 180 },
+    "facing=west":  { "model": "block/furnace", "y": 270 },
+    "facing=east":  { "model": "block/furnace", "y": 90 }
+  }
+}
+```
+
+<JsonSchema>
+  <ApiProperty name="variants" type="object">
+    Maps property string permutations to model configurations.
+  </ApiProperty>
+  <ApiProperty name="multipart" type="array">
+    A list of conditional cases that combine multiple models simultaneously. Used heavily for blocks like fences and walls.
+  </ApiProperty>
+</JsonSchema>

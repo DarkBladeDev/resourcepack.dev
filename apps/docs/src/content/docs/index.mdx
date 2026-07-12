@@ -1,0 +1,36 @@
+---
+title: Welcome to ResourcePack.dev
+description: The ultimate Knowledge Base for Minecraft Java Edition.
+template: splash
+hero:
+  tagline: Explore the deepest technical documentation for Minecraft Resource Packs, designed for humans and AI.
+  image:
+    file: ../../assets/houston.webp
+  actions:
+    - text: Explore Models
+      link: /models/item/generated/
+      icon: right-arrow
+      variant: primary
+    - text: Read the Architecture
+      link: https://github.com/
+      icon: external
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## The Enterprise Knowledge Base
+
+<CardGrid stagger>
+	<Card title="Agnostic Domain Model" icon="pencil">
+		Built on a robust Zod schema. Entities are decoupled from presentation.
+	</Card>
+	<Card title="Versioned by Frontmatter" icon="add-document">
+		No more duplicated folders. Every Knowledge Object maintains its strict lifecycle inline.
+	</Card>
+	<Card title="Highly Semantic" icon="setting">
+		Ready for AI, RAG, and APIs. 
+	</Card>
+	<Card title="Interactive UI" icon="open-book">
+		Consumes a shared React UI package for complex visualizations.
+	</Card>
+</CardGrid>
