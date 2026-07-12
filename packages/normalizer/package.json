@@ -1,0 +1,19 @@
+{
+  "name": "@resourcepack/normalizer",
+  "version": "0.0.0",
+  "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@resourcepack/schemas": "workspace:*",
+    "@resourcepack/parser": "workspace:*",
+    "@resourcepack/renderer": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

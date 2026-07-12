@@ -1,0 +1,11 @@
+{
+  "name": "@resourcepack/knowledge",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "lint": "echo 'No linting yet'"
+  },
+  "dependencies": {
+    "@resourcepack/schemas": "workspace:*"
+  }
+}

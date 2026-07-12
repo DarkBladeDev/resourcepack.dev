@@ -1,0 +1,52 @@
+---
+id: "minecraft.resourcepack.model.item.generated"
+type: "Asset"
+title: "Generated Item Model"
+description: "The built-in model used to dynamically generate a 3D model from a 2D texture."
+introducedIn: "1.8"
+difficulty: "Beginner"
+tags: ["model", "item", "generated", "2d", "texture"]
+namespaces: ["minecraft"]
+relations:
+  - from: "minecraft.resourcepack.model.item.generated"
+    to: "minecraft.resourcepack.texture.item"
+    type: "uses"
+changes:
+  - version: "1.21.4"
+    type: "modified"
+    description: "Added support for tinted texture layers."
+---
+
+import { JsonSchema, ApiProperty } from '@resourcepack/ui';
+
+The `builtin/generated` model is a special, hardcoded model in Minecraft that takes a flat 2D texture and dynamically extrudes its opaque pixels into a 3D item.
+
+## Usage
+
+To use this model, set the `parent` property of your item model to `"item/generated"` (or `"builtin/generated"` in older versions) and define the textures.
+
+```json
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "item/diamond_sword"
+  }
+}
+```
+
+## Properties
+
+<JsonSchema>
+  <ApiProperty name="parent" type="string" required>
+    Must be set to `"item/generated"`.
+  </ApiProperty>
+  <ApiProperty name="textures" type="object" required>
+    An object mapping layer names to texture paths.
+  </ApiProperty>
+  <ApiProperty name="textures.layer0" type="string" required>
+    The base texture for the item.
+  </ApiProperty>
+  <ApiProperty name="textures.layer[1-4]" type="string">
+    Additional texture layers rendered on top of `layer0`.
+  </ApiProperty>
+</JsonSchema>
