@@ -4,12 +4,14 @@
 
 /* Fix for Starlight button and highlighted text contrast */
 :root {
-  --sl-color-text-accent: #2563eb;
+  --sl-color-text: #000000;
+  --sl-color-text-accent: #567ed5;
   --sl-color-text-invert: #ffffff;
 }
 
 :root[data-theme="dark"] {
-  --sl-color-text-accent: #93c5fd;
+  --sl-color-text: #ffffff;
+  --sl-color-text-accent: #0e2a49;
   --sl-color-text-invert: #0f172a;
 }
 
