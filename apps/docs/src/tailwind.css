@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Fix for Starlight button and highlighted text contrast */
+:root {
+  --sl-color-text-accent: #2563eb;
+  --sl-color-text-invert: #ffffff;
+}
+
+:root[data-theme="dark"] {
+  --sl-color-text-accent: #93c5fd;
+  --sl-color-text-invert: #0f172a;
+}
+
+/* Ensure the primary button text is always visible */
+.sl-button.primary {
+  color: var(--sl-color-text-invert) !important;
+  background-color: var(--sl-color-text-accent) !important;
+}
+
+/* Ensure active sidebar links have good contrast */
+a[aria-current="page"] {
+  color: var(--sl-color-text-invert) !important;
+  background-color: var(--sl-color-text-accent) !important;
+}
